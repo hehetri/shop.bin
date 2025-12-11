@@ -1,49 +1,4 @@
-··
-Created on 20 apr. 2015
-dauthor: Rick
-Irom Ckine Imoorc"
-import og import struct
-from tkinter. filedialog import askopenfilename
-#filename = askopenfilename ()
-convertway=3
-Eif convertway==1:
-fil=os.open(".//shopout.bin", os. O_BINARY)
-fi12=open ("shopout.txt", 'w')
-os. read (fil,26)
-totalitems=struct.unpack("<I", os. read (fil, 4)) [0] a=0
-fil2. write(str (totalitems)+"\n")
-while totalitems>a:
-tab=struct.unpack("<B", os. read (fil, 1) ) [0] sort=struct.unpack("<B", os. read (fil, 1) ) [O] mainitem=[0]*4
-for i in range (0,4):
-melntemsstynet nngackle" os read ltn40l
-name=0s.read(fi1,26) . decode("utf-g")
-name=str (name). rstrip(' \t\r\n\0')
-os. read (fil,20)
-varitem = [0]*10
-for i in range(0,10):
-varitem[i]=struct.unpack("<I", os. read (fil, 4)) [0]
-specialnote=gtruct.unpack("<L", os.read (fil, 4)) [0] writeinfo="\ntab " + str(tab) + "\nsort " + str(30rt)
-£or i in range （0,4）：
-weiteinf+=mnmainitemn+str13+11+n ntst/mainitemrin
-Twiteinfntinnnamo nt namo f nnitomiotn
-for i in range(0,10):
-writeinfot="\nitemvariable"tstr (i+1)+" "+str(varitemril)
-writeinfo+="\n"+str (goecialnote)+"\n"
-fil2. write(writeinfo)
-2+=1
-Eif convertway==2:
-fil=os.open(".//shopout.bin", os.O_BINARY)
-fi12=open("shopout.txt", 'tr")
-١٠٥٥= ٣٥د٦٦٦٥٢٢١
-totalitems=int (lines[0])
-fil=open(".//shopout.bin", 'wb') fil.write(save)
-fil.write(struct.pack|'<L', int(totalitems)))
-a=0
-b=2
-
-
-
-"""o codigo esta embaralhado Utility to unpack the encrypted ``shop.bin`` file to a tab-separated text file.
+"""Utility to unpack the encrypted ``shop.bin`` file to a tab-separated text file.
 
 The game file is stored with every byte bitwise inverted (XOR 0xFF). This script
 undoes the inversion, parses the fixed-width records, and writes a human-readable
@@ -55,6 +10,41 @@ import argparse
 import pathlib
 import struct
 from typing import Iterable, Tuple
+
+# Mirror the attribute naming requested for item decoding so both scripts share
+# the same field definitions where applicable.
+ITEM_ATTRIBUTE_FIELDS = [
+    "itemid",
+    "name",
+    "level",
+    "unk",
+    "price",
+    "pricec",
+    "sell",
+    "unk",
+    "unk",
+    "durtype",
+    "duration",
+    "hp",
+    "attmin",
+    "attmax",
+    "att(trans)min",
+    "att(trans)max",
+    "TransGauge",
+    "Crit",
+    "evade",
+    "spectrans",
+    "speed",
+    "transbotdef",
+    "transbotatt",
+    "transspeed",
+    "ranged",
+    "luck",
+    "unk",
+    "effect",
+    "image",
+    "description",
+]
 
 RECORD_SIZE = 108
 HEADER_SKIP = 26
